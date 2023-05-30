@@ -1,0 +1,129 @@
+{
+  "type": ["null", "object"],
+  "properties": {
+    "_index": {
+      "type": ["null", "string"]
+    },
+    "_type": {
+      "type": ["null", "string"]
+    },
+    "_id": {
+      "type": ["null", "string"]
+    },
+    "_score": {
+      "type": ["null", "number"]
+    },
+    "_source": {
+      "type": ["null", "object"],
+      "properties": {
+        "canonicalUrl": {
+          "type": ["null", "string"]
+        },
+        "feeds": {
+          "type": ["null", "object"],
+          "properties": {
+            "sitemaps": {
+              "type": ["null", "boolean"]
+            },
+            "rss": {
+              "type": ["null", "boolean"]
+            },
+            "most-popular": {
+              "type": ["null", "boolean"]
+            },
+            "newsfeed": {
+              "type": ["null", "boolean"]
+            },
+            "apple-news": {
+              "type": ["null", "boolean"]
+            }
+          }
+        },
+        "featureTypes": {
+          "type": ["null", "object"]
+        },
+        "primaryHeadline": {
+          "type": ["null", "string"]
+        },
+        "shortHeadline": {
+          "type": ["null", "string"]
+        },
+        "overrideHeadline": {
+          "type": ["null", "string"]
+        },
+        "feedLayout": {
+          "type": ["null", "string"]
+        },
+        "date": {
+          "type": ["null", "string"]
+        },
+        "authors": {
+          "type": ["null", "array"]
+        },
+        "tags": {
+          "type": ["null", "array"]
+        },
+        "rubric": {
+          "type": ["null", "string"]
+        },
+        "syndicationStatus": {
+          "type": ["null", "string"]
+        },
+        "syndicatedUrl": {
+          "type": ["null", "string"]
+        },
+        "movieReviewName": {
+          "type": ["null", "string"]
+        },
+        "movieReviewUrl": {
+          "type": ["null", "string"]
+        },
+        "movieReviewSummary": {
+          "type": ["null", "string"]
+        },
+        "contentChannel": {
+          "type": ["null", "string"]
+        },
+        "pageTitle": {
+          "type": ["null", "string"]
+        },
+        "plaintextPrimaryHeadline": {
+          "type": ["null", "string"]
+        },
+        "plaintextShortHeadline": {
+          "type": ["null", "string"]
+        },
+        "storyCharacteristics": {
+          "type": ["null", "object"]
+        },
+        "articleDate": {
+          "type": ["null", "string"]
+        },
+        "articleTime": {
+          "type": ["null", "string"]
+        },
+        "byline": {
+          "type": ["null", "array"]
+        },
+        "normalizedTags": {
+          "type": ["null", "array"]
+        },
+        "_version": {
+          "type": ["null", "integer"]
+        },
+        "ledeSize": {
+          "type": ["null", "string"]
+        },
+        "slugLock": {
+          "type": ["null", "boolean"]
+        },
+        "site": {
+          "type": ["null", "string"]
+        },
+        "pageUri": {
+          "type": ["null", "string"]
+        }
+      }
+    }
+  }
+}
