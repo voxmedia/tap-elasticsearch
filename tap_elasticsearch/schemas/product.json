@@ -15,6 +15,7 @@
     },
     "_source": {
       "type": ["null", "object"],
+      "additionalProperties": true,
       "properties": {
         "name": {
           "type": ["null", "string"]
@@ -31,9 +32,6 @@
         "buyUrl": {
           "type": ["null", "string"]
         },
-        "buyUrlHistory": {
-          "type": ["null", "array"]
-        },
         "productId": {
           "type": ["null", "string"]
         },
@@ -42,9 +40,6 @@
         },
         "imageRendition": {
           "type": ["null", "string"]
-        },
-        "description": {
-          "type": ["null", "array"]
         },
         "es_descriptionCombined": {
           "type": ["null", "string"]
