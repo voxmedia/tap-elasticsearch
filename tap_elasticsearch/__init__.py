@@ -1,1 +1,1 @@
-"""Tap for elasticsearch."""
+"""Tap for tap-elasticsearch."""

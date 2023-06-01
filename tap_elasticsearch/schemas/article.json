@@ -1,4 +1,11 @@
 {
+  "data": {
+    "query": {
+      "bool": { "filter": [{ "range": { "date": { "gte": "2023-01-01" } } }] }
+    },
+    "size": 1000,
+    "sort": [{ "date": "desc" }]
+  },
   "properties": {
     "_id": {
       "type": ["null", "string"]
@@ -12,7 +19,7 @@
     "_source": {
       "properties": {
         "_version": {
-          "type": ["null", "integer"]
+          "type": ["null", "number"]
         },
         "bottom": {
           "type": ["null", "string"]
@@ -108,7 +115,7 @@
                   "type": ["null", "object"],
                   "properties": {
                     "_version": {
-                      "type": ["null", "integer"]
+                      "type": ["null", "number"]
                     },
                     "bio": {
                       "type": ["null", "string"]
