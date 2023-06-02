@@ -19,8 +19,9 @@ class ArticlesStream(TapelasticsearchStream):
     path = "/published-articles/_search"
     primary_keys = ["_id"]
     schema_filepath = SCHEMAS_DIR / "article.json"
-    # replication_method = "INCREMENTAL"  # noqa: ERA001
-    # replication_key = "_source.date"  # noqa: ERA001
+    replication_method = "INCREMENTAL"
+    replication_key = "date"
+    is_sorted = True
 
     def prepare_request_payload(
         self,
@@ -38,24 +39,54 @@ class ArticlesStream(TapelasticsearchStream):
         Returns:
             A dictionary with the JSON body for a POST requests.
         """
+        starting_replication_value = self.get_starting_replication_key_value(context)
+        date_filter = (
+            starting_replication_value
+            if starting_replication_value
+            else self.config.get("start_date")
+        )
         params: dict = {
             "query": {
                 "bool": {
                     "filter": [
                         {
                             "range": {
-                                "date": {"gte": self.config.get("start_date")},
+                                "date": {"gte": date_filter},
                             },
                         },
                     ],
                 },
             },
-            "sort": [{"date": "desc"}],
+            "sort": [{"date": "asc"}],
             "size": self.config.get("page_size", 1000),
         }
         if next_page_token:
             params["search_after"] = next_page_token
         return params
+
+    def post_process(
+        self,
+        row: dict,
+        context: dict | None = None,  # noqa: ARG002
+    ) -> dict | None:
+        """As needed, append or transform raw data to match expected structure.
+
+        Args:
+            row: An individual record from the stream.
+            context: The stream context.
+
+        Returns:
+            The updated record dictionary, or ``None`` to skip the record.
+        """
+        row["date"] = row["_source"].pop("date")
+        return row
+
+
+class ContentStream(ArticlesStream):
+    """Define custom stream."""
+
+    name = "content"
+    path = "/published-content/_search"
 
 
 class ProductsStream(TapelasticsearchStream):
@@ -65,6 +96,9 @@ class ProductsStream(TapelasticsearchStream):
     path = "/published-products/_search"
     primary_keys = ["_id"]
     schema_filepath = SCHEMAS_DIR / "product.json"
+    replication_method = "INCREMENTAL"
+    replication_key = "creationDate"
+    is_sorted = True
 
     def prepare_request_payload(
         self,
@@ -82,21 +116,25 @@ class ProductsStream(TapelasticsearchStream):
         Returns:
             A dictionary with the JSON body for a POST requests.
         """
-        start_date = self.config.get("start_date")
-        start_timestamp = pendulum.parse(start_date).int_timestamp
+        starting_replication_value = self.get_starting_replication_key_value(context)
+        date_filter = (
+            starting_replication_value
+            if starting_replication_value
+            else pendulum.parse(self.config.get("start_date")).int_timestamp
+        )
         params: dict = {
             "query": {
                 "bool": {
                     "filter": [
                         {
                             "range": {
-                                "creationDate": {"gte": start_timestamp},
+                                "creationDate": {"gte": date_filter},
                             },
                         },
                     ],
                 },
             },
-            "sort": [{"creationDate": "desc"}],
+            "sort": [{"creationDate": "asc"}],
             "size": self.config.get("page_size", 1000),
         }
         if next_page_token:

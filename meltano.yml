@@ -22,9 +22,7 @@ plugins:
     config:
       page_size: 1000
       url_base: http://bastion.nymetro.com/es/sites-prd
-      start_date: 2023-01-01
-    select:
-    - products.*
+      start_date: 2023-05-01
   loaders:
   - name: target-jsonl
     variant: andyh1203

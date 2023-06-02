@@ -1,0 +1,829 @@
+{
+  "properties": {
+    "_id": {
+      "type": ["null", "string"]
+    },
+    "_index": {
+      "type": ["null", "string"]
+    },
+    "_score": {
+      "type": ["null", "number"]
+    },
+    "_source": {
+      "properties": {
+        "_version": {
+          "type": ["null", "number"]
+        },
+        "bottom": {
+          "type": ["null", "string"]
+        },
+        "updatedOn": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "ampRelay": {
+          "type": ["null", "string"]
+        },
+        "articleDate": {
+          "type": ["null", "string"]
+        },
+        "articleTime": {
+          "type": ["null", "string"]
+        },
+        "canonicalUrl": {
+          "type": ["null", "string"]
+        },
+        "contentChannel": {
+          "type": ["null", "string"]
+        },
+        "date": {
+          "type": ["null", "string"]
+        },
+        "feedLayout": {
+          "type": ["null", "string"]
+        },
+        "ledeSize": {
+          "type": ["null", "string"]
+        },
+        "movieReviewName": {
+          "type": ["null", "string"]
+        },
+        "movieReviewSummary": {
+          "type": ["null", "string"]
+        },
+        "movieReviewUrl": {
+          "type": ["null", "string"]
+        },
+        "overrideHeadline": {
+          "type": ["null", "string"]
+        },
+        "pageTitle": {
+          "type": ["null", "string"]
+        },
+        "pageUri": {
+          "type": ["null", "string"]
+        },
+        "plaintextPrimaryHeadline": {
+          "type": ["null", "string"]
+        },
+        "plaintextShortHeadline": {
+          "type": ["null", "string"]
+        },
+        "primaryHeadline": {
+          "type": ["null", "string"]
+        },
+        "rubric": {
+          "type": ["null", "string"]
+        },
+        "shortHeadline": {
+          "type": ["null", "string"]
+        },
+        "site": {
+          "type": ["null", "string"]
+        },
+        "slugLock": {
+          "type": ["null", "boolean"]
+        },
+        "syndicatedUrl": {
+          "type": ["null", "string"]
+        },
+        "syndicationStatus": {
+          "type": ["null", "string"]
+        },
+        "oldPublishedDate": {
+          "type": ["null", "string"]
+        },
+        "authorHost": {
+          "type": ["null", "string"]
+        },
+        "authors": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "byline": {
+          "items": {
+            "type": ["null", "object"],
+            "properties": {
+              "names": {
+                "items": {
+                  "type": ["null", "object"],
+                  "properties": {
+                    "_version": {
+                      "type": ["null", "number"]
+                    },
+                    "bio": {
+                      "type": ["null", "string"]
+                    },
+                    "email": {
+                      "type": ["null", "string"]
+                    },
+                    "facebook": {
+                      "type": ["null", "string"]
+                    },
+                    "instagram": {
+                      "type": ["null", "string"]
+                    },
+                    "name": {
+                      "type": ["null", "string"]
+                    },
+                    "photoUrl": {
+                      "type": ["null", "string"]
+                    },
+                    "socialHandlePreference": {
+                      "type": ["null", "string"]
+                    },
+                    "text": {
+                      "type": ["null", "string"]
+                    },
+                    "title": {
+                      "type": ["null", "string"]
+                    },
+                    "id": {
+                      "type": ["null", "string"]
+                    },
+                    "count": {
+                      "type": ["null", "integer"]
+                    },
+                    "twitter": {
+                      "type": ["null", "string"]
+                    },
+                    "componentVariation": {
+                      "type": ["null", "string"]
+                    }
+                  }
+                },
+                "type": ["null", "array"]
+              },
+              "prefix": {
+                "type": ["null", "string"]
+              }
+            }
+          },
+          "type": ["null", "array"]
+        },
+        "caption": {
+          "type": ["null", "string"]
+        },
+        "componentVariation": {
+          "type": ["null", "string"]
+        },
+        "crosspost": {
+          "properties": {
+            "betamale": {
+              "type": ["null", "boolean"]
+            },
+            "di": {
+              "type": ["null", "boolean"]
+            },
+            "grubstreet": {
+              "type": ["null", "boolean"]
+            },
+            "nymag": {
+              "type": ["null", "boolean"]
+            },
+            "nyxny": {
+              "type": ["null", "boolean"]
+            },
+            "scienceofus": {
+              "type": ["null", "boolean"]
+            },
+            "selectall": {
+              "type": ["null", "boolean"]
+            },
+            "speed": {
+              "type": ["null", "boolean"]
+            },
+            "strategist": {
+              "type": ["null", "boolean"]
+            },
+            "thecut": {
+              "type": ["null", "boolean"]
+            },
+            "thejob": {
+              "type": ["null", "boolean"]
+            },
+            "travel": {
+              "type": ["null", "boolean"]
+            },
+            "vindicated": {
+              "type": ["null", "boolean"]
+            },
+            "vulture": {
+              "type": ["null", "boolean"]
+            },
+            "wwwthecut": {
+              "type": ["null", "boolean"]
+            },
+            "developing": {
+              "type": ["null", "boolean"]
+            },
+            "intelligencer": {
+              "type": ["null", "boolean"]
+            },
+            "press": {
+              "type": ["null", "boolean"]
+            },
+            "strategist_uk": {
+              "type": ["null", "boolean"]
+            },
+            "curbed": {
+              "type": ["null", "boolean"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": true
+        },
+        "dateUpdated": {
+          "type": ["null", "boolean"]
+        },
+        "dropCap": {
+          "type": ["null", "boolean"]
+        },
+        "eligibleForGoogleStandout": {
+          "type": ["null", "boolean"]
+        },
+        "empty": {
+          "type": ["null", "string"]
+        },
+        "evergreenSlug": {
+          "type": ["null", "boolean"]
+        },
+        "featureTypes": {
+          "properties": {
+            "Advice": {
+              "type": ["null", "boolean"]
+            },
+            "Book_excerpt": {
+              "type": ["null", "boolean"]
+            },
+            "Column": {
+              "type": ["null", "boolean"]
+            },
+            "Cover_story_online": {
+              "type": ["null", "boolean"]
+            },
+            "Explainer": {
+              "type": ["null", "boolean"]
+            },
+            "Feature": {
+              "type": ["null", "boolean"]
+            },
+            "First_person_essay": {
+              "type": ["null", "boolean"]
+            },
+            "Image_gallery": {
+              "type": ["null", "boolean"]
+            },
+            "Interview_or_profile": {
+              "type": ["null", "boolean"]
+            },
+            "List_or_roundup": {
+              "type": ["null", "boolean"]
+            },
+            "Look_book": {
+              "type": ["null", "boolean"]
+            },
+            "New_york_magazine_story": {
+              "type": ["null", "boolean"]
+            },
+            "News": {
+              "type": ["null", "boolean"]
+            },
+            "News_aggregation": {
+              "type": ["null", "boolean"]
+            },
+            "News_commentary_and_analysis": {
+              "type": ["null", "boolean"]
+            },
+            "News_original_reporting": {
+              "type": ["null", "boolean"]
+            },
+            "Other_feature_or_column": {
+              "type": ["null", "boolean"]
+            },
+            "Product_roundup": {
+              "type": ["null", "boolean"]
+            },
+            "Home_tour": {
+              "type": ["null", "boolean"]
+            },
+            "Listing": {
+              "type": ["null", "boolean"]
+            },
+            "Photo_essay": {
+              "type": ["null", "boolean"]
+            },
+            "As_told_to": {
+              "type": ["null", "boolean"]
+            },
+            "Profile": {
+              "type": ["null", "boolean"]
+            },
+            "Q_a": {
+              "type": ["null", "boolean"]
+            },
+            "Quiz": {
+              "type": ["null", "boolean"]
+            },
+            "Recipe": {
+              "type": ["null", "boolean"]
+            },
+            "Review": {
+              "type": ["null", "boolean"]
+            },
+            "Sale_multiple_products": {
+              "type": ["null", "boolean"]
+            },
+            "Sale_single_product": {
+              "type": ["null", "boolean"]
+            },
+            "Slideshow_intro": {
+              "type": ["null", "boolean"]
+            },
+            "Sponsor_story": {
+              "type": ["null", "boolean"]
+            },
+            "Tv_recap": {
+              "type": ["null", "boolean"]
+            },
+            "Video_aggregation": {
+              "type": ["null", "boolean"]
+            },
+            "Video_original": {
+              "type": ["null", "boolean"]
+            },
+            "Video_original_news": {
+              "type": ["null", "boolean"]
+            },
+            "Interview": {
+              "type": ["null", "boolean"]
+            },
+            "Deal": {
+              "type": ["null", "boolean"]
+            },
+            "Podcast_episode": {
+              "type": ["null", "boolean"]
+            },
+            "Feature_interview": {
+              "type": ["null", "boolean"]
+            },
+            "Enterprise": {
+              "type": ["null", "boolean"]
+            },
+            "Breaking_news_original_reporting": {
+              "type": ["null", "boolean"]
+            },
+            "Undefined": {
+              "type": ["null", "boolean"]
+            },
+            "Ecomm": {
+              "type": ["null", "boolean"]
+            },
+            "Promotional_post": {
+              "type": ["null", "boolean"]
+            },
+            "Games": {
+              "type": ["null", "boolean"]
+            },
+            "Vertical_enterprise": {
+              "type": ["null", "boolean"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": true
+        },
+        "feedImgUrl": {
+          "type": ["null", "string"]
+        },
+        "feeds": {
+          "properties": {
+            "apple_news": {
+              "type": ["null", "boolean"]
+            },
+            "facebook_news_feed": {
+              "type": ["null", "boolean"]
+            },
+            "most_popular": {
+              "type": ["null", "boolean"]
+            },
+            "newsfeed": {
+              "type": ["null", "boolean"]
+            },
+            "rss": {
+              "type": ["null", "boolean"]
+            },
+            "sitemaps": {
+              "type": ["null", "boolean"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": true
+        },
+        "firstAuthorName": {
+          "type": ["null", "string"]
+        },
+        "galleryLength": {
+          "type": ["null", "integer"]
+        },
+        "graphicBrandingRubric": {
+          "type": ["null", "string"]
+        },
+        "graphicBrandingRubricMediaPath": {
+          "type": ["null", "string"]
+        },
+        "hasSecondaryBylines": {
+          "type": ["null", "boolean"]
+        },
+        "headAuthors": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "headDescription": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "headImage": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "headSlug": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "headTitle": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "hedDekSize": {
+          "type": ["null", "string"]
+        },
+        "showMagazineIssueDate": {
+          "type": ["null", "boolean"]
+        },
+        "textSector": {
+          "type": ["null", "string"]
+        },
+        "typographyColor": {
+          "type": ["null", "string"]
+        },
+        "typographyTitle": {
+          "type": ["null", "string"]
+        },
+        "hypenatedBrandingRubric": {
+          "type": ["null", "string"]
+        },
+        "hypenatedTagRubric": {
+          "type": ["null", "string"]
+        },
+        "imageUrl": {
+          "type": ["null", "string"]
+        },
+        "isLegacy": {
+          "type": ["null", "boolean"]
+        },
+        "isMovieReview": {
+          "type": ["null", "boolean"]
+        },
+        "ledeImageAlt": {
+          "type": ["null", "string"]
+        },
+        "ledeImageCaption": {
+          "type": ["null", "string"]
+        },
+        "ledeImageCredit": {
+          "type": ["null", "string"]
+        },
+        "ledeImageCreditOverride": {
+          "type": ["null", "string"]
+        },
+        "ledeImageUrl": {
+          "type": ["null", "string"]
+        },
+        "ledeRecircAd": {
+          "type": ["null", "boolean"]
+        },
+        "magazineIssueDate": {
+          "type": ["null", "string"]
+        },
+        "magazineIssueSection": {
+          "type": ["null", "string"]
+        },
+        "magazineIssueUrl": {
+          "type": ["null", "string"]
+        },
+        "manualSlugUnlock": {
+          "type": ["null", "boolean"]
+        },
+        "normalizedTags": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "originalArticle": {
+          "type": ["null", "string"]
+        },
+        "overflowHeader": {
+          "type": ["null", "boolean"]
+        },
+        "pageDescription": {
+          "type": ["null", "string"]
+        },
+        "plaintextSortHeadline": {
+          "type": ["null", "string"]
+        },
+        "prevNext": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "readMore": {
+          "type": ["null", "boolean"]
+        },
+        "rubricMessage": {
+          "type": ["null", "string"]
+        },
+        "secondaryAttribution": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "secondaryBylineText": {
+          "type": ["null", "string"]
+        },
+        "section": {
+          "type": ["null", "string"]
+        },
+        "seoDescription": {
+          "type": ["null", "string"]
+        },
+        "seoHeadline": {
+          "type": ["null", "string"]
+        },
+        "shareButtons": {
+          "type": ["null", "string"]
+        },
+        "shareToolsRef": {
+          "type": ["null", "string"]
+        },
+        "shouldBeGoogleStandout": {
+          "type": ["null", "boolean"]
+        },
+        "shouldHideAds": {
+          "type": ["null", "boolean"]
+        },
+        "showSocial": {
+          "type": ["null", "boolean"]
+        },
+        "sideSlug": {
+          "type": ["null", "string"]
+        },
+        "siloImgUrl": {
+          "type": ["null", "string"]
+        },
+        "slug": {
+          "type": ["null", "string"]
+        },
+        "socialDescription": {
+          "type": ["null", "string"]
+        },
+        "sponsoredRubric": {
+          "type": ["null", "boolean"]
+        },
+        "storyCharacteristics": {
+          "properties": {
+            "strong_visual": {
+              "type": ["null", "boolean"]
+            },
+            "top_story": {
+              "type": ["null", "boolean"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": true
+        },
+        "dynamicLedeImage": {
+          "properties": {
+            "url": {
+              "type": ["null", "string"]
+            },
+            "mobile": {
+              "type": ["null", "string"]
+            },
+            "alt": {
+              "type": ["null", "string"]
+            },
+            "desktop": {
+              "type": ["null", "string"]
+            },
+            "tablet": {
+              "type": ["null", "string"]
+            },
+            "primaryImage": {
+              "type": ["null", "boolean"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": true
+        },
+        "syndicatedStatus": {
+          "type": ["null", "string"]
+        },
+        "tags": {
+          "type": ["null", "array"],
+          "items": { "type": ["null", "string"] }
+        },
+        "teaser": {
+          "type": ["null", "string"]
+        },
+        "text": {
+          "type": ["null", "string"]
+        },
+        "type": {
+          "type": ["null", "string"]
+        },
+        "videoId": {
+          "type": ["null", "string"]
+        },
+        "recommendLedeLayout": {
+          "type": ["null", "boolean"]
+        },
+        "hasSecondaryZone": {
+          "type": ["null", "boolean"]
+        },
+        "hideTeaser": {
+          "type": ["null", "boolean"]
+        },
+        "showBylines": {
+          "type": ["null", "boolean"]
+        },
+        "ledeMobileCropOverride": {
+          "type": ["null", "boolean"]
+        },
+        "ledeImageType": {
+          "type": ["null", "string"]
+        },
+        "ledeCaption": {
+          "type": ["null", "string"]
+        },
+        "ledeLayout": {
+          "type": ["null", "string"]
+        },
+        "ledeUrl": {
+          "type": ["null", "string"]
+        },
+        "ledeCreditOverride": {
+          "type": ["null", "string"]
+        },
+        "ledeRendition": {
+          "type": ["null", "string"]
+        },
+        "overrideCreditRequired": {
+          "type": ["null", "boolean"]
+        },
+        "ledeCredit": {
+          "type": ["null", "string"]
+        },
+        "ledeBorder": {
+          "type": ["null", "boolean"]
+        },
+        "ledeAlt": {
+          "type": ["null", "string"]
+        },
+        "displayTeaser": {
+          "type": ["null", "string"]
+        },
+        "ledeSizeUpdated": {
+          "type": ["null", "boolean"]
+        },
+        "prevLedeUrl": {
+          "type": ["null", "string"]
+        },
+        "trueFeatureTypes": {
+          "type": ["null", "string"]
+        },
+        "url": {
+          "type": ["null", "string"]
+        },
+        "component_name": {
+          "type": ["null", "string"]
+        },
+        "originalUrl": {
+          "type": ["null", "string"]
+        },
+        "magazineIssueOrder": {
+          "type": ["null", "integer"]
+        },
+        "subsite": {
+          "type": ["null", "string"]
+        },
+        "componentsCount": {
+          "type": ["null", "integer"]
+        },
+        "doc": {
+          "properties": {
+            "pageUri": {
+              "type": ["null", "string"]
+            }
+          },
+          "type": ["null", "object"],
+          "additionalProperties": true
+        },
+        "mobileTextSector": {
+          "type": ["null", "string"]
+        },
+        "overrideMobileTextSector": {
+          "type": ["null", "boolean"]
+        },
+        "mobileTypographyColor": {
+          "type": ["null", "string"]
+        },
+        "overrideMobileTypographyColor": {
+          "type": ["null", "boolean"]
+        },
+        "mobileTypographyTitle": {
+          "type": ["null", "string"]
+        },
+        "fullBleedMobileDisclosure": {
+          "type": ["null", "string"]
+        },
+        "rubricPath": {
+          "type": ["null", "string"]
+        },
+        "feedVideoUrl": {
+          "type": ["null", "string"]
+        },
+        "showMagazineIssueTout": {
+          "type": ["null", "boolean"]
+        },
+        "removeTextShadow": {
+          "type": ["null", "boolean"]
+        },
+        "hasInlineEcommLinks": {
+          "type": ["null", "boolean"]
+        },
+        "suppressInlineAmazonLinks": {
+          "type": ["null", "boolean"]
+        },
+        "displayVideo": {
+          "type": ["null", "boolean"]
+        },
+        "revenueDisclaimerOnAmp": {
+          "type": ["null", "string"]
+        },
+        "autoDisclaimerCSS": {
+          "type": ["null", "string"]
+        },
+        "seoSquareImg": {
+          "type": ["null", "string"]
+        },
+        "feedImgCredit": {
+          "type": ["null", "string"]
+        },
+        "photoUrl": {
+          "type": ["null", "string"]
+        },
+        "shortBio": {
+          "type": ["null", "string"]
+        },
+        "expandedBio": {
+          "type": ["null", "string"]
+        },
+        "sanitizedAuthorName": {
+          "type": ["null", "string"]
+        },
+        "liveBlogPosting": {
+          "type": ["null", "boolean"]
+        },
+        "liveBlogPostingStart": {
+          "type": ["null", "string"]
+        },
+        "liveBlogPostingEnd": {
+          "type": ["null", "string"]
+        },
+        "shouldSuppressAuthorBio": {
+          "type": ["null", "boolean"]
+        },
+        "ledeOverlay": {
+          "type": ["null", "boolean"]
+        },
+        "combinedHedDekCharCount": {
+          "type": ["null", "string"]
+        },
+        "liveBlogPostingStartDate": {
+          "type": ["null", "string"]
+        },
+        "liveBlogPostingEndDate": {
+          "type": ["null", "string"]
+        },
+        "liveBlogPostingStartTime": {
+          "type": ["null", "string"]
+        },
+        "liveBlogPostingEndTime": {
+          "type": ["null", "string"]
+        }
+      },
+      "type": ["null", "object"]
+    },
+    "_type": {
+      "type": ["null", "string"]
+    }
+  },
+  "type": ["null", "object"]
+}

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from math import ceil
+import typing as t
 from pathlib import Path
 from typing import Callable, Iterable
 
@@ -19,6 +19,18 @@ SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 class CustomPaginator(BaseAPIPaginator):
     """custom paginator."""
 
+    def __init__(self, start_value: t.TPageToken, page_size: int) -> None:
+        """Create a new paginator.
+
+        Args:
+            start_value: Initial value.
+        """
+        self._value: t.TPageToken = start_value
+        self._page_size = page_size
+        self._page_count = 0
+        self._finished = False
+        self._last_seen_record: dict | None = None
+
     def get_next(self, response: requests.Response) -> str | None:
         data = response.json()["hits"]["hits"]
         length = len(data)
@@ -26,10 +38,8 @@ class CustomPaginator(BaseAPIPaginator):
 
     def has_more(self, response: Response) -> bool:
         """Return True if there are more pages to process."""
-        page_count = self.count
-        total_results = response.json()["hits"]["total"]
-        total_pages = ceil(total_results / 1000)
-        return page_count < total_pages
+        len_page_results = len(response.json()["hits"]["hits"])
+        return self._page_size == len_page_results
 
 
 class TapelasticsearchStream(RESTStream):
@@ -73,7 +83,7 @@ class TapelasticsearchStream(RESTStream):
         Returns:
             A pagination helper instance.
         """
-        return CustomPaginator(None)
+        return CustomPaginator(None, self.config.get("page_size"))
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
         """Parse the response and return an iterator of result records.
