@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import typing as t
 from pathlib import Path
-from typing import Callable, Iterable
+from typing import Any, Callable, Iterable
 
 import requests
 from requests import Response
@@ -34,7 +34,12 @@ class CustomPaginator(BaseAPIPaginator):
     def get_next(self, response: requests.Response) -> str | None:
         data = response.json()["hits"]["hits"]
         length = len(data)
-        return data[length - 1]["sort"]
+        try:
+            return data[length - 1]["sort"]
+        except KeyError:
+            # print(data[length - 1])  # noqa: ERA001
+            # print(data[length - 2])  # noqa: ERA001
+            return None
 
     def has_more(self, response: Response) -> bool:
         """Return True if there are more pages to process."""
@@ -45,7 +50,7 @@ class CustomPaginator(BaseAPIPaginator):
 class TapelasticsearchStream(RESTStream):
     """tap-elasticsearch stream class."""
 
-    date_column = "date"
+    primary_keys = ["_id"]
 
     @property
     def url_base(self) -> str:
@@ -85,6 +90,51 @@ class TapelasticsearchStream(RESTStream):
         """
         return CustomPaginator(None, self.config.get("page_size"))
 
+    def prepare_request_payload(
+        self,
+        context: dict | None,
+        next_page_token: Any | None,
+    ) -> dict | None:
+        """Prepare the data payload for the REST API request.
+
+        By default, no payload will be sent (return None).
+
+        Args:
+            context: The stream context.
+            next_page_token: The next page index or value.
+
+        Returns:
+            A dictionary with the JSON body for a POST requests.
+        """
+        params: dict = {"size": self.config.get("page_size", 1000)}
+        if self.replication_method == "FULL_TABLE":
+            params["query"] = {
+                "match_all": {},
+            }
+            params["sort"] = [{self.primary_keys[0]: "asc"}]
+        elif self.replication_method == "INCREMENTAL":
+            starting_replication_value = self.get_starting_replication_key_value(
+                context,
+            )
+
+            params["query"] = {
+                "bool": {
+                    "filter": [
+                        {
+                            "range": {
+                                self.replication_key: {
+                                    "gte": starting_replication_value,
+                                },
+                            },
+                        },
+                    ],
+                },
+            }
+            params["sort"] = [{self.replication_key: "asc"}]
+        if next_page_token:
+            params["search_after"] = next_page_token
+        return params
+
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
         """Parse the response and return an iterator of result records.
 
@@ -110,5 +160,6 @@ class TapelasticsearchStream(RESTStream):
         Returns:
             The updated record dictionary, or ``None`` to skip the record.
         """
-        # TODO: Delete this method if not needed.
+        if self.replication_method == "INCREMENTAL":
+            row[self.replication_key] = row["_source"].pop(self.replication_key)
         return row
