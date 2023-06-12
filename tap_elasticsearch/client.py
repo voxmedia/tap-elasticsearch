@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 import typing as t
 from pathlib import Path
 from typing import Any, Callable, Iterable
@@ -14,6 +15,20 @@ from singer_sdk.streams import RESTStream
 
 _Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
+
+
+def sanitize_keys(value):
+    if isinstance(value, dict):
+        return {
+            replace_special_chars(key): sanitize_keys(val) for key, val in value.items()
+        }
+    if isinstance(value, list):
+        return [sanitize_keys(val) for val in value]
+    return value
+
+
+def replace_special_chars(key):
+    return re.sub("[ \\-&\\/]", "_", key)
 
 
 class CustomPaginator(BaseAPIPaginator):
@@ -162,4 +177,5 @@ class TapelasticsearchStream(RESTStream):
         """
         if self.replication_method == "INCREMENTAL":
             row[self.replication_key] = row["_source"].pop(self.replication_key)
+        row["_source"] = sanitize_keys(row["_source"])
         return row

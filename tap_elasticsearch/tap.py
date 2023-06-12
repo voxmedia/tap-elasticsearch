@@ -8,13 +8,6 @@ from singer_sdk import Stream, Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
 from tap_elasticsearch.client import TapelasticsearchStream
-from tap_elasticsearch.streams import ArticlesStream, ContentStream, ProductsStream
-
-STREAM_TYPES = [
-    ArticlesStream,
-    ContentStream,
-    ProductsStream,
-]
 
 
 class Tapelasticsearch(Tap):
