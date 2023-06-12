@@ -1,6 +1,6 @@
 # tap-elasticsearch
 
-`tap-elasticsearch` is a Singer tap for elasticsearch.
+`tap-elasticsearch` is a Singer tap for tap-elasticsearch.
 
 Built with the [Meltano Tap SDK](https://sdk.meltano.com) for Singer Taps.
 
