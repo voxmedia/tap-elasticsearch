@@ -33,6 +33,12 @@ class Tapelasticsearch(Tap):
             th.StringType,
             description="The start date",
         ),
+        th.Property(
+            "request_interval",
+            th.floatType,
+            description="The interval between requests",
+            default=0,
+        ),
     ).to_dict()
 
     def discover_streams(self) -> list[Stream]:
