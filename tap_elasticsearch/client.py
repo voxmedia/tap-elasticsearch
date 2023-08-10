@@ -3,12 +3,14 @@
 from __future__ import annotations
 
 import re
+import time
 import typing as t
 from pathlib import Path
 from typing import Any, Callable, Iterable
 
 import requests
 from requests import Response
+from singer_sdk import metrics
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator
 from singer_sdk.streams import RESTStream
@@ -149,6 +151,36 @@ class TapelasticsearchStream(RESTStream):
         if next_page_token:
             params["search_after"] = next_page_token
         return params
+
+    def request_records(self, context: dict | None) -> t.Iterable[dict]:
+        """Request records from REST endpoint(s), returning response records.
+
+        If pagination is detected, pages will be recursed automatically.
+
+        Args:
+            context: Stream partition or context dictionary.
+
+        Yields:
+            An item for every record in the response.
+        """
+        paginator = self.get_new_paginator()
+        decorated_request = self.request_decorator(self._request)
+
+        with metrics.http_request_counter(self.name, self.path) as request_counter:
+            request_counter.context = context
+
+            while not paginator.finished:
+                prepared_request = self.prepare_request(
+                    context,
+                    next_page_token=paginator.current_value,
+                )
+                resp = decorated_request(prepared_request, context)
+                request_counter.increment()
+                self.update_sync_costs(prepared_request, resp, context)
+                yield from self.parse_response(resp)
+
+                time.sleep(self.config.get("request_interval"))
+                paginator.advance(resp)
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
         """Parse the response and return an iterator of result records.
