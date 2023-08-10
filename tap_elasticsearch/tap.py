@@ -35,7 +35,7 @@ class Tapelasticsearch(Tap):
         ),
         th.Property(
             "request_interval",
-            th.floatType,
+            th.NumberType,
             description="The interval between requests",
             default=0,
         ),
