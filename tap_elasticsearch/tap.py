@@ -10,6 +10,49 @@ from singer_sdk import typing as th  # JSON schema typing helpers
 from tap_elasticsearch.client import TapelasticsearchStream
 
 
+generic_schema = {
+    "properties": {
+        "_index": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "_id": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "_type": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "_score": {
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "sort": {
+            "type": [
+                "array",
+                "null"
+            ]
+        },
+        "_source": {
+            "type": [
+                "object",
+                "null"
+            ]
+        },
+    },
+    "type": "object",
+}
+
+
 class Tapelasticsearch(Tap):
     """tap-elasticsearch tap class."""
 
@@ -49,24 +92,33 @@ class Tapelasticsearch(Tap):
         except ConnectionError as e:
             msg = "Could not connect to Elasticsearch instance."
             raise RuntimeError(msg) from e
+
+        if "error" in aliases:
+            raise RuntimeError(aliases)
+
         alias_names = []
-        for v in aliases.values():
+        for k, v in aliases.items():
             if v["aliases"]:
                 alias_names.extend(v["aliases"])
+            else:
+                alias_names.append(k)
         # included_indices = self.config.get("included_indices", [])  # noqa: ERA001
-        catalog_dict = {
-            s["stream"]: s for s in self.input_catalog.to_dict().get("streams", {})
-        }
+        catalog_dict = {}
+        if self.input_catalog:
+            catalog_dict = {
+                s["stream"]: s for s in self.input_catalog.to_dict().get("streams", {})
+            }
         for alias in alias_names:
+            schema = {}
             try:
                 if not catalog_dict[alias]:
-                    continue
+                    schema = generic_schema
             except KeyError:
-                continue
+                schema = generic_schema
             stream = TapelasticsearchStream(
                 tap=self,
                 name=alias,
-                schema=catalog_dict[alias]["schema"],
+                schema=schema if schema else catalog_dict[alias]["schema"],
                 path=f"/{alias}/_search",
             )
             stream.apply_catalog(self.catalog)

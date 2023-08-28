@@ -5,4 +5,26 @@ default_environment: test
 environments:
 - name: test
 plugins:
-
+  extractors:
+  - name: tap-elasticsearch
+    namespace: tap_elasticsearch
+    pip_url: -e .
+    capabilities:
+    - state
+    - catalog
+    - discover
+    - about
+    - stream-maps
+    settings:
+    - name: page_size
+      kind: integer
+    - name: url_base
+      kind: string
+    - name: start_date
+      kind: string
+    - name: request_interval
+      kind: integer
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
