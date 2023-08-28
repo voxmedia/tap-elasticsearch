@@ -49,6 +49,10 @@ class Tapelasticsearch(Tap):
         except ConnectionError as e:
             msg = "Could not connect to Elasticsearch instance."
             raise RuntimeError(msg) from e
+
+        if "error" in aliases:
+            raise RuntimeError(aliases)
+
         alias_names = []
         for v in aliases.values():
             if v["aliases"]:
