@@ -179,7 +179,9 @@ class TapelasticsearchStream(RESTStream):
                 self.update_sync_costs(prepared_request, resp, context)
                 yield from self.parse_response(resp)
 
-                time.sleep(self.config.get("request_interval"))
+                request_interval = self.config.get("request_interval")
+                if request_interval:
+                    time.sleep(float(request_interval))
                 paginator.advance(resp)
 
     def parse_response(self, response: requests.Response) -> Iterable[dict]:
